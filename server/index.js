@@ -28,7 +28,7 @@ var corsOptions = {
 
 // cors ใช้ตอนเขียน Server แยก || produciton ตอนเทสต้องเป็น https นะใช้ ngrok ช่วย
 /* ในที่นี้ผมแยกไว้สามอันเพราะเทสสาม Server มี now , local(https) , localhost แล้วแต่จะใช้ตัวไหน 
-1. now คือ deploy ขึ้น now , ใช้ deploy เล่นๆ Production เรียบร้อย
+1. now คือ deploy ขึ้นโฮส , ใช้ deploy เล่นๆ Production เรียบร้อย ผมใช้ now deploy
 2. https แค่ไว้ทดสอบว่ามันส่งมาป่าว ส่งช้าไหมไรงี้แต่ยังไม่ production แค่กึ่งๆ นึกออกปะ Test แบบ DevEnv 
 3. localhost คือไว้ใช้ตอนเขียนโค้ดแล้วรันแบบ babel-node ทำนองนี 
 ** ในนี้ comment CORS ออกก็ได้เพราะมัน http:// ที่เดียวกัน .com <--- 
@@ -69,7 +69,9 @@ appNext
     if (isDevelopment) {
       server.listen(port, err => {
         if (err) throw err;
-        console.log(`Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`);
+        console.log(
+          `Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`
+        );
       });
     }
   })
