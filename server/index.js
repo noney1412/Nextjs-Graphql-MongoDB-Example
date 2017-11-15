@@ -34,12 +34,15 @@ var corsOptions = {
 ** ในนี้ comment CORS ออกก็ได้เพราะมัน http:// ที่เดียวกัน .com <--- 
 */
 
-
 /* ------------ Connection */
 mongoose.set("debug", process.env.DEBUG);
-mongoose.connect(process.env.MONGO_URL, {
-  useMongoClient: true
-});
+mongoose.connect(
+  process.env.MONGO_URL ||
+    "mongodb://cntest:1234@ds233895.mlab.com:33895/kittenkat",
+  {
+    useMongoClient: true
+  }
+);
 
 appNext
   .prepare()
@@ -66,7 +69,7 @@ appNext
     if (isDevelopment) {
       server.listen(port, err => {
         if (err) throw err;
-        console.log(`http://localhost:${port}/graphiql`);
+        console.log(`Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`);
       });
     }
   })
