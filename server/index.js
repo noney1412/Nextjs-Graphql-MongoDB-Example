@@ -17,14 +17,6 @@ const handle = appNext.getRequestHandler();
 
 /* ------------ cors -> mongoose -> express -> graphql */
 
-// cors ใช้ตอนเขียน Server แยก || produciton ตอนเทสต้องเป็น https นะใช้ ngrok ช่วย
-/* ในที่นี้ผมแยกไว้สามอันเพราะเทสสาม Server มี now , local(https) , localhost แล้วแต่จะใช้ตัวไหน 
-1. now คือ deploy ขึ้น now , ใช้ deploy เล่นๆ Production เรียบร้อย
-2. https แค่ไว้ทดสอบว่ามันส่งมาป่าว ส่งช้าไหมไรงี้แต่ยังไม่ production แค่กึ่งๆ นึกออกปะ Test แบบ DevEnv 
-3. localhost คือไว้ใช้ตอนเขียนโค้ดแล้วรันแบบ babel-node ทำนองนี 
-** ในนี้ comment CORS ออกก็ได้เพราะมัน http:// ที่เดียวกัน .com <--- 
-*/
-
 const port = parseInt(process.env.PORT, 10) || 3000;
 var corsOptions = {
   origin:
@@ -34,11 +26,23 @@ var corsOptions = {
   credentials: true
 };
 
+// cors ใช้ตอนเขียน Server แยก || produciton ตอนเทสต้องเป็น https นะใช้ ngrok ช่วย
+/* ในที่นี้ผมแยกไว้สามอันเพราะเทสสาม Server มี now , local(https) , localhost แล้วแต่จะใช้ตัวไหน 
+1. now คือ deploy ขึ้นโฮส , ใช้ deploy เล่นๆ Production เรียบร้อย ผมใช้ now deploy
+2. https แค่ไว้ทดสอบว่ามันส่งมาป่าว ส่งช้าไหมไรงี้แต่ยังไม่ production แค่กึ่งๆ นึกออกปะ Test แบบ DevEnv 
+3. localhost คือไว้ใช้ตอนเขียนโค้ดแล้วรันแบบ babel-node ทำนองนี 
+** ในนี้ comment CORS ออกก็ได้เพราะมัน http:// ที่เดียวกัน .com <--- 
+*/
+
 /* ------------ Connection */
 mongoose.set("debug", process.env.DEBUG);
-mongoose.connect(process.env.MONGO_URL, {
-  useMongoClient: true
-});
+mongoose.connect(
+  process.env.MONGO_URL ||
+    "mongodb://cntest:1234@ds233895.mlab.com:33895/kittenkat",
+  {
+    useMongoClient: true
+  }
+);
 
 appNext
   .prepare()
@@ -65,7 +69,7 @@ appNext
     if (isDevelopment) {
       server.listen(port, err => {
         if (err) throw err;
-        console.log(`http://localhost:${port}/graphiql`);
+        console.log(`Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`);
       });
     }
   })
