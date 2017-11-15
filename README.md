@@ -18,6 +18,7 @@
 ## Start
 
 ลองทดสอบ -- 
+สำหรับใครที่ใช้ window : ลง npm install -g win-node-env ก่อนนะครับสำหรับคนที่รันไม่ได้
 ``` 
 yarn install 
 yarn dev 
