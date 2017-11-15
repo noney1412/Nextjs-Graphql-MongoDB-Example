@@ -1,0 +1,47 @@
+{
+  "env": {
+    "server": {
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        "next/babel",
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    },
+    "development": {
+      "presets": "next/babel"
+    },
+    "production": {
+      "presets": "next/babel"
+    }
+  },
+  "plugins": [
+    "transform-decorators-legacy",
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
+      }
+    ],
+    "transform-class-properties"
+  ]
+}
