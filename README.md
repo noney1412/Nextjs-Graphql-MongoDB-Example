@@ -9,7 +9,7 @@
    2. หัดใช้ MongoDB + Save Data ลงไปผ่าน Graphql 
    3. Apollo Client เอา Data มาโชว์ที่ Fontend
 2. Authen -> OAuth (facebook) ** ไว้ค่อยมาต่อหลังจบอันบน
-3. Deploy (now) **  ไว้ค่อยมาต่อ
+3. Deploy + Test **  ไว้ค่อยมาต่อ
 4. @decorator ลองใช้กานเถอะ
 5. Golang ก็มา มาทำไมวะ 5555 ที่นี้มันถิ่น JS
 6. Rxjs รอไปก่อน
