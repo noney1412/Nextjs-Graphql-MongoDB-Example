@@ -1,16 +1,16 @@
 import {} from "dotenv/config";
 
-/* ------------ */
+//
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
-import cors from "cors";
 import bodyParser from "body-parser";
 import compression from "compression";
+import cors from "cors";
 import express from "express";
 import next from "next";
 
 import { schema, models } from "./data/index";
 import mongoose from "./config/mongoose";
-import { isProduction, isDevelopment } from "apollo-utilities";
+
 const dev = process.env.NODE_ENV !== "production";
 const appNext = next({ dev });
 const handle = appNext.getRequestHandler();
@@ -60,18 +60,19 @@ appNext
       graphqlExpress({ schema, context: { models } })
     );
 
-    server.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
+    if (dev)
+      server.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 
     server.get("*", (req, res) => {
       return handle(req, res);
     });
 
-    if (isDevelopment) {
-      server.listen(port, err => {
-        if (err) throw err;
-        console.log(`Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`);
-      });
-    }
+    server.listen(port, err => {
+      if (err) throw err;
+      console.log(
+        `Server http://localhost:${port}/graphiql \n Index http://localhost:${port}`
+      );
+    });
   })
   .catch(ex => {
     console.error(ex.stack);
