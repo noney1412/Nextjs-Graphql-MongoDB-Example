@@ -3,14 +3,15 @@ import {} from "dotenv/config";
 /* ------------ */
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import bodyParser from "body-parser";
-import cors from "cors";
 import compression from "compression";
-import express from "express";
 import mongoose from "./config/mongoose";
+import cors from "cors";
+import express from "express";
 import next from "next";
 
 import { schema, models } from "./data/index";
-import { isProduction, isDevelopment } from "apollo-utilities";
+import { isDevelopment } from "apollo-utilities";
+
 const dev = process.env.NODE_ENV !== "production";
 const appNext = next({ dev });
 const handle = appNext.getRequestHandler();

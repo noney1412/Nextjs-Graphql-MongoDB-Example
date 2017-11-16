@@ -1,4 +1,8 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, {
+  Head,
+  Main,
+  NextScript,
+} from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -10,7 +14,7 @@ export default class MyDocument extends Document {
     const styleTags = sheet.getStyleElement();
     return {
       ...page,
-      styleTags
+      styleTags,
     };
   }
 
@@ -18,8 +22,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>ทดสอบ</title>
-          {this.props.styleTags}
+          <title>ทดสอบ</title>{this.props.styleTags}
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
