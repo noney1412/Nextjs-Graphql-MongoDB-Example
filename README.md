@@ -15,9 +15,14 @@
 6. Rxjs รอไปก่อน
 7. นึกไม่ออกละรออันบนให้จบก่อน
 
+* --- Medium จะลงเป็นตอนๆ ไว้วันละตอน --- *
+ตอนที่ 0 จะพาไปดู editor ของผมก่อนว่าตั้งค่าอะไรบ้างบลาๆ เขียนเป็น Eng นะครับแต่อ่านไม่ยาก 
+0. https://medium.com/@panchanom/ep-0-my-cutie-vscode-382a11bbc18e
+
 ## Start
 
 ลองทดสอบ -- 
+สำหรับใครที่ใช้ window : ลง npm install -g win-node-env ก่อนนะครับสำหรับคนที่รันไม่ได้
 ``` 
 yarn install 
 yarn dev 
